@@ -1,0 +1,24 @@
+make Ford
+model Focus Wagon
+base 18445
+option set:
+package ZTW
+color Grabber Green Clearcoat 0
+transmission automatic 0
+brakes standard 0
+side-airbag equipped 350
+moonroof none 0
+option set:
+package ZTW2
+color Grabber Green Clearcoat 2
+transmission automatic 2
+brakes standard 2
+side-airbag equipped 3502
+moonroof none 2
+option set:
+package ZTW3
+color Grabber Green Clearcoat 3
+transmission automatic 3
+brakes standard 3
+side-airbag equipped 3533
+moonroof none 3
