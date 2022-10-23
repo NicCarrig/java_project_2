@@ -197,8 +197,6 @@ public class FileIO {
 //	}
 	
 	public void serializeVehicle(Automobile car) {
-//		String fileName = car.getMake() + "_" + car.getModel() + "_" + car.getSubmodel() + ".txt";	
-//		String fileName = car.getMake() + "_" + car.getModel() + "_" + car.getSubmodel();
 		String fileName = car.getMake() + "_" + car.getModel();
 		
 		try {

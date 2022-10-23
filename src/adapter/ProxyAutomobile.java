@@ -2,6 +2,7 @@ package adapter;
 
 import model.*;
 import util.*;
+import exception.*;
 
 public abstract class ProxyAutomobile {
 	
@@ -21,22 +22,36 @@ public abstract class ProxyAutomobile {
 		a1.printCarInfo();
 	}
 	
-	public void updateSubmodelName(String modelName, String submodelName, String newName) {
+	public void updateSubmodelName(String modelName, String submodelName, String newName){
 		//search submodel name and update it
-		FileIO car = new FileIO(modelName);
-		a1 = car.deserializeVehicle(modelName);
-		int submodelIndex = a1.findSubmodelIndex(submodelName);
-		a1.setSubmodel(submodelIndex, newName);
-		car.serializeVehicle(a1);
+		try {			
+			FileIO car = new FileIO(modelName);
+			a1 = car.deserializeVehicle(modelName);
+			int submodelIndex = a1.findSubmodelIndex(submodelName);
+			a1.setSubmodel(submodelIndex, newName);
+			car.serializeVehicle(a1);
+		}
+		catch(Exception e) {
+			fixErr(201);
+		}
 	}
 	
 	public void updateOptionPrice(String modelName, String submodelName, String optionName, double newPrice) {
 		//search option within submodel and change it
-		FileIO car = new FileIO(modelName);
-		a1 = car.deserializeVehicle(modelName);
-		int submodelIndex = a1.findSubmodelIndex(submodelName);
-		a1.setOneOptionPriceByName(submodelIndex, optionName, newPrice);
-		car.serializeVehicle(a1);
+		try {				
+			FileIO car = new FileIO(modelName);
+			a1 = car.deserializeVehicle(modelName);
+			int submodelIndex = a1.findSubmodelIndex(submodelName);
+			a1.setOneOptionPriceByName(submodelIndex, optionName, newPrice);
+			car.serializeVehicle(a1);
+		}
+		catch(Exception e) {
+			fixErr(202);
+		}
+	}
+	
+	public void fixErr(int errNo){
+		AutoException fix = new AutoException(errNo);
 	}
 
 }
